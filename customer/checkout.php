@@ -78,13 +78,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <?php foreach ($cart_items as $item): ?>
                             <div class="d-flex justify-content-between align-items-center mb-3 p-2 rounded" style="background: #f8f9fa;">
                                 <div class="fw-bold"><?php echo htmlspecialchars($item['name']); ?> <span class="text-muted">x <?php echo $item['quantity']; ?></span></div>
-                                <div class="fw-bold">$<?php echo number_format($item['price'] * $item['quantity'], 2); ?></div>
+                                <div class="fw-bold">NPR. <?php echo number_format($item['price'] * $item['quantity'], 2); ?></div>
                             </div>
                         <?php endforeach; ?>
                         <hr>
                         <div class="d-flex justify-content-between align-items-center">
                             <h4 class="fw-bold">Total</h4>
-                            <h3 class="price">$<?php echo number_format($total, 2); ?></h3>
+                            <h3 class="price">NPR. <?php echo number_format($total, 2); ?></h3>
                         </div>
                     </div>
                 </div>

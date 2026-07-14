@@ -69,9 +69,9 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                                 <span class="fw-bold"><?php echo htmlspecialchars($item['name']); ?></span>
                                                             </div>
                                                         </td>
-                                                        <td class="fw-bold">$<?php echo number_format($item['price'], 2); ?></td>
+                                                        <td class="fw-bold">NPR. <?php echo number_format($item['price'], 2); ?></td>
                                                         <td class="fw-bold"><?php echo $item['quantity']; ?></td>
-                                                        <td class="fw-bold">$<?php echo number_format($item['price'] * $item['quantity'], 2); ?></td>
+                                                        <td class="fw-bold">NPR. <?php echo number_format($item['price'] * $item['quantity'], 2); ?></td>
                                                     </tr>
                                                 <?php endforeach; ?>
                                             </tbody>
@@ -80,7 +80,7 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     <hr>
                                     <div class="d-flex justify-content-end align-items-center">
                                         <h4 class="fw-bold mb-0">
-                                            Order Total: <span class="price">$<?php echo number_format($order['total_amount'], 2); ?></span>
+                                            Order Total: <span class="price">NPR. <?php echo number_format($order['total_amount'], 2); ?></span>
                                         </h4>
                                     </div>
                                 </div>
