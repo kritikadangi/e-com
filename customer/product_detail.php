@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_to_cart'])) {
                 <div class="card-body">
                     <span class="badge bg-primary mb-3"><?php echo htmlspecialchars($product['category']); ?></span>
                     <h2 class="fw-bold mb-3"><?php echo htmlspecialchars($product['name']); ?></h2>
-                    <h3 class="fw-bold price mb-4">$<?php echo number_format($product['price'], 2); ?></h3>
+                    <h3 class="fw-bold price mb-4">NPR. <?php echo number_format($product['price'], 2); ?></h3>
                     
                     <div class="mb-4">
                         <div class="d-flex align-items-center gap-2 mb-2">

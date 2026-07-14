@@ -75,11 +75,11 @@ foreach ($cart_items as $item) {
                                                 <span class="fw-bold"><?php echo htmlspecialchars($item['name']); ?></span>
                                             </div>
                                         </td>
-                                        <td class="fw-bold">$<?php echo number_format($item['price'], 2); ?></td>
+                                        <td class="fw-bold">NPR. <?php echo number_format($item['price'], 2); ?></td>
                                         <td>
                                             <input type="number" name="quantity[<?php echo $item['id']; ?>]" class="form-control" value="<?php echo $item['quantity']; ?>" min="1" max="<?php echo $item['stock']; ?>" style="max-width: 120px;">
                                         </td>
-                                        <td class="fw-bold">$<?php echo number_format($item['price'] * $item['quantity'], 2); ?></td>
+                                        <td class="fw-bold">NPR. <?php echo number_format($item['price'] * $item['quantity'], 2); ?></td>
                                         <td>
                                             <button type="submit" name="remove_item" value="1" class="btn btn-danger btn-sm">
                                                 <i class="fas fa-trash me-1"></i>Remove
@@ -108,7 +108,7 @@ foreach ($cart_items as $item) {
                             </h4>
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <span class="fw-bold">Total:</span>
-                                <span class="fs-3 price">$<?php echo number_format($total, 2); ?></span>
+                                <span class="fs-3 price">NPR. <?php echo number_format($total, 2); ?></span>
                             </div>
                             <a href="checkout.php" class="btn btn-primary btn-lg w-100">
                                 <i class="fas fa-credit-card me-2"></i>Proceed to Checkout
