@@ -18,6 +18,10 @@ CREATE TABLE IF NOT EXISTS users (
 INSERT INTO users (name, email, password, phone, address, role) VALUES 
 ('Admin', 'admin@ecommerce.com', '$2y$10$7KhacWzYhTWb3wLus1fNIeHai0eRZvzRq4ZAD/rHLNAI8RjQjFywm', '1234567890', 'Admin Address', 'admin');
 
+-- Insert default customer user (password: customer123)
+INSERT INTO users (name, email, password, phone, address, role) VALUES 
+('John Doe', 'customer@ecommerce.com', '$2y$10$QE3QqgG4BAq2BWZFFQ.j7.hSEfP.xHs2owMBnvF.ZaMid8BdIGO8y', '9876543210', '123 Main St, City', 'customer');
+
 -- Products table
 CREATE TABLE IF NOT EXISTS products (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -29,6 +33,15 @@ CREATE TABLE IF NOT EXISTS products (
     image VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Insert dummy products
+INSERT INTO products (name, category, description, price, stock, image) VALUES 
+('Floral Summer Dress', 'Women', 'Beautiful floral summer dress with lightweight fabric', 49.99, 20, ''),
+('Classic Denim Jeans', 'Men', 'Comfortable classic denim jeans for men', 39.99, 15, ''),
+('Cute T-Shirt', 'Child', 'Soft cotton t-shirt for kids with cartoon print', 14.99, 30, ''),
+('Leather Wallet', 'Accessories', 'Genuine leather wallet with multiple card slots', 24.99, 18, ''),
+('Elegant Handbag', 'Women', 'Stylish handbag for everyday use', 69.99, 12, ''),
+('Running Shoes', 'Men', 'Comfortable running shoes with cushioning', 59.99, 10, '');
 
 -- Cart table
 CREATE TABLE IF NOT EXISTS cart (

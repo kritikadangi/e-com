@@ -36,55 +36,62 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <?php include '../includes/header.php'; ?>
 <?php include '../includes/navbar.php'; ?>
 
-<div class="container mt-5 mb-5">
-    <div class="row justify-content-center">
-        <div class="col-md-7">
-            <div class="card shadow-lg">
-                <div class="card-header text-center" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
-                    <h4 class="mb-0"><i class="fas fa-user-plus me-2"></i>Create Account</h4>
+<div class="container mt-5 pt-4 mb-5">
+    <div class="row justify-content-center fade-in-up">
+        <div class="col-md-10 col-lg-8">
+            <div class="card shadow-lg border-0">
+                <div class="card-header text-center bg-gradient-primary text-white py-4">
+                    <h4 class="mb-0 fw-bold"><i class="fas fa-user-plus me-2"></i>Create Account</h4>
                 </div>
-                <div class="card-body p-4">
+                <div class="card-body p-5">
                     <?php if ($error): ?>
-                        <div class="alert alert-danger" role="alert">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             <i class="fas fa-exclamation-circle me-2"></i><?php echo $error; ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                         </div>
                     <?php endif; ?>
                     <?php if ($success): ?>
-                        <div class="alert alert-success" role="alert">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
                             <i class="fas fa-check-circle me-2"></i><?php echo $success; ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                         </div>
                     <?php endif; ?>
                     <form method="POST">
-                        <div class="mb-3">
-                            <label class="form-label"><i class="fas fa-user me-2"></i>Full Name *</label>
+                        <div class="mb-4">
+                            <label class="form-label fw-bold"><i class="fas fa-user me-2 text-primary"></i>Full Name *</label>
                             <input type="text" name="name" class="form-control form-control-lg" required placeholder="Enter your full name">
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label"><i class="fas fa-envelope me-2"></i>Email *</label>
+                        <div class="mb-4">
+                            <label class="form-label fw-bold"><i class="fas fa-envelope me-2 text-primary"></i>Email Address *</label>
                             <input type="email" name="email" class="form-control form-control-lg" required placeholder="Enter your email">
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label"><i class="fas fa-lock me-2"></i>Password *</label>
-                            <input type="password" name="password" class="form-control form-control-lg" required placeholder="Enter your password">
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold"><i class="fas fa-lock me-2 text-primary"></i>Password *</label>
+                                <input type="password" name="password" class="form-control form-control-lg" required placeholder="Enter your password">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold"><i class="fas fa-lock me-2 text-primary"></i>Confirm Password *</label>
+                                <input type="password" name="confirm_password" class="form-control form-control-lg" required placeholder="Confirm your password">
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label"><i class="fas fa-lock me-2"></i>Confirm Password *</label>
-                            <input type="password" name="confirm_password" class="form-control form-control-lg" required placeholder="Confirm your password">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label"><i class="fas fa-phone me-2"></i>Phone</label>
+                        <div class="mb-4">
+                            <label class="form-label fw-bold"><i class="fas fa-phone me-2 text-primary"></i>Phone Number</label>
                             <input type="text" name="phone" class="form-control form-control-lg" placeholder="Enter your phone number">
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label"><i class="fas fa-home me-2"></i>Address</label>
+                        <div class="mb-4">
+                            <label class="form-label fw-bold"><i class="fas fa-home me-2 text-primary"></i>Address</label>
                             <textarea name="address" class="form-control form-control-lg" rows="3" placeholder="Enter your address"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-lg w-100">
-                            <i class="fas fa-user-plus me-2"></i>Sign Up
+                        <button type="submit" class="btn btn-primary btn-lg w-100 mb-3">
+                            <i class="fas fa-user-plus me-2"></i>Create Account
                         </button>
                     </form>
-                    <div class="mt-4 text-center">
-                        <p class="mb-0">Already have an account? <a href="login.php" class="text-decoration-none fw-bold" style="color: #667eea;">Login here</a></p>
+                    <div class="text-center mt-4">
+                        <p class="mb-0 text-muted">
+                            Already have an account? 
+                            <a href="login.php" class="text-decoration-none fw-bold text-primary">Sign in here</a>
+                        </p>
                     </div>
                 </div>
             </div>

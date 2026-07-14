@@ -38,38 +38,54 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <?php include '../includes/header.php'; ?>
 <?php include '../includes/navbar.php'; ?>
 
-<div class="container mt-5">
-    <h2 class="mb-4">My Profile</h2>
+<div class="container mt-5 pt-4">
+    <h2 class="mb-4 fw-bold">
+        <i class="fas fa-user-circle me-2"></i>My Profile
+    </h2>
     
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
+    <div class="row justify-content-center fade-in-up">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-lg">
+                <div class="card-header bg-gradient-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-user-edit me-2"></i>Edit Profile</h5>
+                </div>
+                <div class="card-body p-4">
                     <?php if ($success): ?>
-                        <div class="alert alert-success"><?php echo $success; ?></div>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <i class="fas fa-check-circle me-2"></i><?php echo $success; ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
                     <?php endif; ?>
                     <?php if ($error): ?>
-                        <div class="alert alert-danger"><?php echo $error; ?></div>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <i class="fas fa-exclamation-triangle me-2"></i><?php echo $error; ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
                     <?php endif; ?>
                     
                     <form method="POST">
-                        <div class="mb-3">
-                            <label class="form-label">Full Name</label>
-                            <input type="text" name="name" class="form-control" value="<?php echo htmlspecialchars($user['name']); ?>" required>
+                        <div class="mb-4">
+                            <label class="form-label fw-bold"><i class="fas fa-user me-2"></i>Full Name</label>
+                            <input type="text" name="name" class="form-control form-control-lg" value="<?php echo htmlspecialchars($user['name']); ?>" required>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Email</label>
-                            <input type="email" class="form-control" value="<?php echo htmlspecialchars($user['email']); ?>" disabled>
+                        <div class="mb-4">
+                            <label class="form-label fw-bold"><i class="fas fa-envelope me-2"></i>Email Address</label>
+                            <input type="email" class="form-control form-control-lg bg-light" value="<?php echo htmlspecialchars($user['email']); ?>" disabled>
+                            <small class="text-muted">Email cannot be changed</small>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Phone</label>
-                            <input type="text" name="phone" class="form-control" value="<?php echo htmlspecialchars($user['phone']); ?>">
+                        <div class="mb-4">
+                            <label class="form-label fw-bold"><i class="fas fa-phone me-2"></i>Phone Number</label>
+                            <input type="text" name="phone" class="form-control form-control-lg" value="<?php echo htmlspecialchars($user['phone']); ?>">
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Address</label>
-                            <textarea name="address" class="form-control" rows="3"><?php echo htmlspecialchars($user['address']); ?></textarea>
+                        <div class="mb-4">
+                            <label class="form-label fw-bold"><i class="fas fa-home me-2"></i>Address</label>
+                            <textarea name="address" class="form-control form-control-lg" rows="4"><?php echo htmlspecialchars($user['address']); ?></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Update Profile</button>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-save me-2"></i>Update Profile
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>

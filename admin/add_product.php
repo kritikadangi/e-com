@@ -47,47 +47,69 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <?php include '../includes/header.php'; ?>
 <?php include '../includes/navbar.php'; ?>
 
-<div class="container mt-5">
-    <h2 class="mb-4">Add Product</h2>
+<div class="container mt-5 pt-4">
+    <h2 class="mb-4 fw-bold"><i class="fas fa-plus-circle me-2"></i>Add Product</h2>
     
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-body">
+    <div class="row justify-content-center fade-in-up">
+        <div class="col-md-10 col-lg-8">
+            <div class="card shadow-lg">
+                <div class="card-header bg-gradient-primary text-white">
+                    <h5 class="mb-0 fw-bold">Product Details</h5>
+                </div>
+                <div class="card-body p-4">
                     <?php if ($success): ?>
-                        <div class="alert alert-success"><?php echo $success; ?></div>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <i class="fas fa-check-circle me-2"></i><?php echo $success; ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
                     <?php endif; ?>
                     <?php if ($error): ?>
-                        <div class="alert alert-danger"><?php echo $error; ?></div>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <i class="fas fa-exclamation-triangle me-2"></i><?php echo $error; ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
                     <?php endif; ?>
                     
                     <form method="POST" enctype="multipart/form-data">
-                        <div class="mb-3">
-                            <label class="form-label">Product Name *</label>
-                            <input type="text" name="name" class="form-control" required>
+                        <div class="mb-4">
+                            <label class="form-label fw-bold"><i class="fas fa-tag me-2"></i>Product Name *</label>
+                            <input type="text" name="name" class="form-control form-control-lg" required>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Category *</label>
-                            <input type="text" name="category" class="form-control" required>
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold"><i class="fas fa-folder me-2"></i>Category *</label>
+                                <select name="category" class="form-select form-control-lg" required>
+                                    <option value="Women">Women</option>
+                                    <option value="Men">Men</option>
+                                    <option value="Child">Child</option>
+                                    <option value="Accessories">Accessories</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label fw-bold"><i class="fas fa-dollar-sign me-2"></i>Price *</label>
+                                <input type="number" name="price" class="form-control form-control-lg" step="0.01" required>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label fw-bold"><i class="fas fa-boxes me-2"></i>Stock *</label>
+                                <input type="number" name="stock" class="form-control form-control-lg" required>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Description</label>
-                            <textarea name="description" class="form-control" rows="3"></textarea>
+                        <div class="mb-4">
+                            <label class="form-label fw-bold"><i class="fas fa-align-left me-2"></i>Description</label>
+                            <textarea name="description" class="form-control form-control-lg" rows="4"></textarea>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Price *</label>
-                            <input type="number" name="price" class="form-control" step="0.01" required>
+                        <div class="mb-4">
+                            <label class="form-label fw-bold"><i class="fas fa-image me-2"></i>Product Image</label>
+                            <input type="file" name="image" class="form-control form-control-lg" accept="image/*">
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Stock *</label>
-                            <input type="number" name="stock" class="form-control" required>
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg flex-grow-1">
+                                <i class="fas fa-plus-circle me-2"></i>Add Product
+                            </button>
+                            <a href="manage_products.php" class="btn btn-secondary btn-lg">
+                                <i class="fas fa-times me-2"></i>Cancel
+                            </a>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Product Image</label>
-                            <input type="file" name="image" class="form-control" accept="image/*">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Add Product</button>
-                        <a href="manage_products.php" class="btn btn-secondary">Cancel</a>
                     </form>
                 </div>
             </div>

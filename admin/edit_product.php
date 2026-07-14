@@ -68,55 +68,87 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <?php include '../includes/header.php'; ?>
 <?php include '../includes/navbar.php'; ?>
 
-<div class="container mt-5">
-    <h2 class="mb-4">Edit Product</h2>
+<div class="container mt-5 pt-4">
+    <h2 class="mb-4 fw-bold"><i class="fas fa-edit me-2"></i>Edit Product</h2>
     
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-body">
+    <div class="row justify-content-center fade-in-up">
+        <div class="col-md-10 col-lg-8">
+            <div class="card shadow-lg">
+                <div class="card-header bg-gradient-primary text-white">
+                    <h5 class="mb-0 fw-bold">Product Details</h5>
+                </div>
+                <div class="card-body p-4">
                     <?php if ($success): ?>
-                        <div class="alert alert-success"><?php echo $success; ?></div>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <i class="fas fa-check-circle me-2"></i><?php echo $success; ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
                     <?php endif; ?>
                     <?php if ($error): ?>
-                        <div class="alert alert-danger"><?php echo $error; ?></div>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <i class="fas fa-exclamation-triangle me-2"></i><?php echo $error; ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
                     <?php endif; ?>
                     
                     <form method="POST" enctype="multipart/form-data">
-                        <div class="mb-3">
-                            <label class="form-label">Product Name *</label>
-                            <input type="text" name="name" class="form-control" value="<?php echo htmlspecialchars($product['name']); ?>" required>
+                        <div class="mb-4">
+                            <label class="form-label fw-bold"><i class="fas fa-tag me-2"></i>Product Name *</label>
+                            <input type="text" name="name" class="form-control form-control-lg" 
+                                   value="<?php echo htmlspecialchars($product['name']); ?>" required>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Category *</label>
-                            <input type="text" name="category" class="form-control" value="<?php echo htmlspecialchars($product['category']); ?>" required>
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold"><i class="fas fa-folder me-2"></i>Category *</label>
+                                <select name="category" class="form-select form-control-lg" required>
+                                    <option value="Women" <?php echo $product['category'] == 'Women' ? 'selected' : ''; ?>>Women</option>
+                                    <option value="Men" <?php echo $product['category'] == 'Men' ? 'selected' : ''; ?>>Men</option>
+                                    <option value="Child" <?php echo $product['category'] == 'Child' ? 'selected' : ''; ?>>Child</option>
+                                    <option value="Accessories" <?php echo $product['category'] == 'Accessories' ? 'selected' : ''; ?>>Accessories</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label fw-bold"><i class="fas fa-dollar-sign me-2"></i>Price *</label>
+                                <input type="number" name="price" class="form-control form-control-lg" step="0.01" 
+                                       value="<?php echo $product['price']; ?>" required>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label fw-bold"><i class="fas fa-boxes me-2"></i>Stock *</label>
+                                <input type="number" name="stock" class="form-control form-control-lg" 
+                                       value="<?php echo $product['stock']; ?>" required>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Description</label>
-                            <textarea name="description" class="form-control" rows="3"><?php echo htmlspecialchars($product['description']); ?></textarea>
+                        <div class="mb-4">
+                            <label class="form-label fw-bold"><i class="fas fa-align-left me-2"></i>Description</label>
+                            <textarea name="description" class="form-control form-control-lg" rows="4">
+<?php echo htmlspecialchars($product['description']); ?></textarea>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Price *</label>
-                            <input type="number" name="price" class="form-control" step="0.01" value="<?php echo $product['price']; ?>" required>
+                        <div class="mb-4">
+                            <label class="form-label fw-bold"><i class="fas fa-image me-2"></i>Current Image</label>
+                            <div class="mt-2">
+                                <?php if ($product['image']): ?>
+                                    <img src="../uploads/<?php echo htmlspecialchars($product['image']); ?>" 
+                                         style="width: 120px; height: 120px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                                <?php else: ?>
+                                    <div class="bg-light d-inline-flex align-items-center justify-content-center" 
+                                         style="width: 120px; height: 120px; border-radius: 12px;">
+                                        <i class="fas fa-image text-muted fa-2x"></i>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Stock *</label>
-                            <input type="number" name="stock" class="form-control" value="<?php echo $product['stock']; ?>" required>
+                        <div class="mb-4">
+                            <label class="form-label fw-bold"><i class="fas fa-camera me-2"></i>New Image (optional)</label>
+                            <input type="file" name="image" class="form-control form-control-lg" accept="image/*">
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Current Image</label>
-                            <?php if ($product['image']): ?>
-                                <img src="../uploads/<?php echo htmlspecialchars($product['image']); ?>" style="width: 100px; height: 100px; object-fit: cover;">
-                            <?php else: ?>
-                                No Image
-                            <?php endif; ?>
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg flex-grow-1">
+                                <i class="fas fa-save me-2"></i>Update Product
+                            </button>
+                            <a href="manage_products.php" class="btn btn-secondary btn-lg">
+                                <i class="fas fa-times me-2"></i>Cancel
+                            </a>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">New Image (optional)</label>
-                            <input type="file" name="image" class="form-control" accept="image/*">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Update Product</button>
-                        <a href="manage_products.php" class="btn btn-secondary">Cancel</a>
                     </form>
                 </div>
             </div>

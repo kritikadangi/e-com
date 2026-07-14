@@ -1,5 +1,4 @@
-<?php
-require_once 'config/database.php';
+<?php require_once 'config/database.php';
 
 $stmt = $pdo->query("SELECT * FROM products WHERE stock > 0 ORDER BY created_at DESC LIMIT 6");
 $featured_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -11,38 +10,45 @@ $categories = $categories_stmt->fetchAll(PDO::FETCH_COLUMN);
 <?php include 'includes/navbar.php'; ?>
 
 <div class="hero-section">
-    <div class="container text-center">
-        <h1><i class="fas fa-shopping-bag me-2"></i>Welcome to E-Shop</h1>
-        <p class="lead">Your one-stop shop for amazing products</p>
+    <div class="container text-center fade-in-up">
+        <h1><i class="fas fa-shopping-bag me-3"></i>Welcome to FashionHub</h1>
+        <p class="lead mb-4">Discover amazing products at unbeatable prices</p>
         <a href="customer/products.php" class="btn btn-light btn-lg">
-            <i class="fas fa-store me-2"></i>Shop Now
+            <i class="fas fa-store me-2"></i>Start Shopping
         </a>
     </div>
 </div>
 
-<div class="container mt-5">
-    <h2 class="mb-4">Featured Products</h2>
+<div class="container mt-5 pt-4">
+    <h2 class="mb-4 fw-bold">
+        <i class="fas fa-star text-warning me-2"></i>Featured Products
+    </h2>
     <div class="row">
         <?php if (count($featured_products) > 0): ?>
-            <?php foreach ($featured_products as $product): ?>
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
+            <?php foreach ($featured_products as $index => $product): ?>
+                <div class="col-md-4 mb-4 fade-in-up" style="animation-delay: <?php echo $index * 0.1; ?>s;">
+                    <div class="card product-card h-100">
                         <?php if ($product['image']): ?>
-                            <img src="uploads/<?php echo htmlspecialchars($product['image']); ?>" class="card-img-top" style="height: 200px; object-fit: cover;">
+                            <img src="uploads/<?php echo htmlspecialchars($product['image']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($product['name']); ?>">
                         <?php else: ?>
-                            <div class="bg-secondary text-white d-flex align-items-center justify-content-center" style="height: 200px;">No Image</div>
+                            <div class="bg-light d-flex align-items-center justify-content-center" style="height: 220px;">
+                                <i class="fas fa-image text-muted fa-3x"></i>
+                            </div>
                         <?php endif; ?>
                         <div class="card-body">
+                            <span class="badge bg-primary mb-2"><?php echo htmlspecialchars($product['category']); ?></span>
                             <h5 class="card-title"><?php echo htmlspecialchars($product['name']); ?></h5>
-                            <p class="card-text text-muted"><?php echo htmlspecialchars($product['category']); ?></p>
-                            <p class="card-text fw-bold">$<?php echo number_format($product['price'], 2); ?></p>
-                            <a href="customer/product_detail.php?id=<?php echo $product['id']; ?>" class="btn btn-primary w-100">View Details</a>
+                            <p class="price mb-3">$<?php echo number_format($product['price'], 2); ?></p>
+                            <a href="customer/product_detail.php?id=<?php echo $product['id']; ?>" class="btn btn-primary w-100">
+                                <i class="fas fa-eye me-2"></i>View Details
+                            </a>
                         </div>
                     </div>
                 </div>
             <?php endforeach; ?>
         <?php else: ?>
-            <div class="col-12 text-center">
+            <div class="col-12 text-center py-5">
+                <i class="fas fa-box-open text-muted fa-4x mb-3"></i>
                 <p class="text-muted">No products available yet.</p>
             </div>
         <?php endif; ?>
@@ -51,12 +57,14 @@ $categories = $categories_stmt->fetchAll(PDO::FETCH_COLUMN);
 
 <?php if (count($categories) > 0): ?>
 <div class="container mt-5 mb-5">
-    <h2 class="mb-4">Shop by Category</h2>
+    <h2 class="mb-4 fw-bold">
+        <i class="fas fa-tags me-2"></i>Shop by Category
+    </h2>
     <div class="row">
-        <?php foreach ($categories as $category): ?>
-            <div class="col-md-2 mb-3">
-                <a href="customer/products.php?category=<?php echo urlencode($category); ?>" class="btn btn-outline-primary w-100">
-                    <?php echo htmlspecialchars($category); ?>
+        <?php foreach ($categories as $index => $category): ?>
+            <div class="col-md-4 col-lg-2 mb-3 fade-in-up" style="animation-delay: <?php echo $index * 0.08; ?>s;">
+                <a href="customer/products.php?category=<?php echo urlencode($category); ?>" class="btn btn-outline-primary w-100 py-3">
+                    <i class="fas fa-folder-open me-2"></i><?php echo htmlspecialchars($category); ?>
                 </a>
             </div>
         <?php endforeach; ?>

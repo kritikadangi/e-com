@@ -4,7 +4,7 @@
             $baseUrl = (strpos($_SERVER['PHP_SELF'], '/customer/') !== false || strpos($_SERVER['PHP_SELF'], '/admin/') !== false) ? '../' : '';
             echo $baseUrl . 'index.php'; 
         ?>">
-            <i class="fas fa-store me-2"></i>E-Shop
+            <i class="fas fa-store me-2"></i>FashionHub
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>

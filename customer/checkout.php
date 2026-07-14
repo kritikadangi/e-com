@@ -52,47 +52,65 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <?php include '../includes/header.php'; ?>
 <?php include '../includes/navbar.php'; ?>
 
-<div class="container mt-5">
+<div class="container mt-5 pt-4">
     <?php if ($success): ?>
-        <div class="alert alert-success">
-            <?php echo $success; ?>
-            <a href="my_orders.php" class="alert-link">View my orders</a>
+        <div class="card fade-in-up">
+            <div class="card-body text-center py-5">
+                <i class="fas fa-check-circle text-success fa-5x mb-4"></i>
+                <h2 class="fw-bold mb-3">Order Placed Successfully!</h2>
+                <p class="text-muted mb-4">Your order has been placed and is being processed</p>
+                <a href="my_orders.php" class="btn btn-primary btn-lg">
+                    <i class="fas fa-receipt me-2"></i>View My Orders</a>
+            </div>
         </div>
     <?php else: ?>
-        <h2 class="mb-4">Checkout</h2>
+        <h2 class="mb-4 fw-bold">
+            <i class="fas fa-credit-card me-2"></i>Checkout
+        </h2>
         
-        <div class="row">
-            <div class="col-md-8">
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <h5 class="mb-0">Order Summary</h5>
+        <div class="row fade-in-up">
+            <div class="col-md-8 mb-4 mb-md-0">
+                <div class="card">
+                    <div class="card-header bg-gradient-primary text-white">
+                        <h5 class="mb-0"><i class="fas fa-list me-2"></i>Order Summary</h5>
                     </div>
                     <div class="card-body">
                         <?php foreach ($cart_items as $item): ?>
-                            <div class="d-flex justify-content-between mb-2">
-                                <div><?php echo htmlspecialchars($item['name']); ?> x <?php echo $item['quantity']; ?></div>
-                                <div>$<?php echo number_format($item['price'] * $item['quantity'], 2); ?></div>
+                            <div class="d-flex justify-content-between align-items-center mb-3 p-2 rounded" style="background: #f8f9fa;">
+                                <div class="fw-bold"><?php echo htmlspecialchars($item['name']); ?> <span class="text-muted">x <?php echo $item['quantity']; ?></span></div>
+                                <div class="fw-bold">$<?php echo number_format($item['price'] * $item['quantity'], 2); ?></div>
                             </div>
                         <?php endforeach; ?>
                         <hr>
-                        <div class="d-flex justify-content-between fw-bold">
-                            <div>Total</div>
-                            <div>$<?php echo number_format($total, 2); ?></div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h4 class="fw-bold">Total</h4>
+                            <h3 class="price">$<?php echo number_format($total, 2); ?></h3>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card">
-                    <div class="card-header">
-                        <h5 class="mb-0">Payment Method</h5>
+                    <div class="card-header bg-gradient-success text-white">
+                        <h5 class="mb-0"><i class="fas fa-money-bill-wave me-2"></i>Payment Method</h5>
                     </div>
                     <div class="card-body">
-                        <p class="mb-3">Cash on Delivery</p>
-                        <form method="POST">
-                            <button type="submit" class="btn btn-primary w-100">Place Order</button>
-                        </form>
+                        <div class="mb-4 p-3 rounded" style="background: #f8f9fa;">
+                            <div class="d-flex align-items-center">
+                            <i class="fas fa-hand-holding-usd text-success fa-2x me-3"></i>
+                            <div>
+                                <h6 class="fw-bold mb-0">Cash on Delivery</h6>
+                                <p class="text-muted small mb-0">Pay when you receive your order</p>
+                            </div>
+                        </div>
                     </div>
+                    <form method="POST">
+                        <div class="px-3 pb-3">
+                            <button type="submit" class="btn btn-primary btn-lg w-100">
+                                <i class="fas fa-check-circle me-2"></i>Place Order
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
