@@ -87,9 +87,9 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                                 <span class="fw-bold"><?php echo htmlspecialchars($item['name']); ?></span>
                                                             </div>
                                                         </td>
-                                                        <td class="fw-bold">$<?php echo number_format($item['price'], 2); ?></td>
+                                                        <td class="fw-bold">NPR. <?php echo number_format($item['price'], 2); ?></td>
                                                         <td class="fw-bold"><?php echo $item['quantity']; ?></td>
-                                                        <td class="fw-bold">$<?php echo number_format($item['price'] * $item['quantity'], 2); ?></td>
+                                                        <td class="fw-bold">NPR. <?php echo number_format($item['price'] * $item['quantity'], 2); ?></td>
                                                     </tr>
                                                 <?php endforeach; ?>
                                             </tbody>
@@ -99,7 +99,7 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             </div>
                             <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
                                 <h4 class="fw-bold mb-0">
-                                    <i class="fas fa-calculator me-2"></i>Total: <span class="text-primary">$<?php echo number_format($order['total_amount'], 2); ?></span>
+                                    <i class="fas fa-calculator me-2"></i>Total: <span class="text-primary">NPR. <?php echo number_format($order['total_amount'], 2); ?></span>
                                 </h4>
                                 <form method="POST" class="d-flex gap-2">
                                     <input type="hidden" name="order_id" value="<?php echo $order['id']; ?>">

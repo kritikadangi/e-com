@@ -92,7 +92,7 @@ $categories = $categories_stmt->fetchAll(PDO::FETCH_COLUMN);
                             <span class="badge bg-primary mb-2"><?php echo htmlspecialchars($product['category']); ?></span>
                             <h5 class="card-title"><?php echo htmlspecialchars($product['name']); ?></h5>
                             <p class="card-text text-muted small mb-2"><?php echo substr(htmlspecialchars($product['description']), 0, 80); ?>...</p>
-                            <p class="price mb-3">$<?php echo number_format($product['price'], 2); ?></p>
+                            <p class="price mb-3">NPR. <?php echo number_format($product['price'], 2); ?></p>
                             <div class="d-grid gap-2">
                                 <a href="product_detail.php?id=<?php echo $product['id']; ?>" class="btn btn-primary">
                                     <i class="fas fa-eye me-2"></i>View Details

@@ -55,7 +55,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <td>
                                     <span class="badge bg-primary"><?php echo htmlspecialchars($product['category']); ?></span>
                                 </td>
-                                <td class="fw-bold">$<?php echo number_format($product['price'], 2); ?></td>
+                                <td class="fw-bold">NPR. <?php echo number_format($product['price'], 2); ?></td>
                                 <td>
                                     <span class="badge <?php echo $product['stock'] > 10 ? 'bg-success' : ($product['stock'] > 0 ? 'bg-warning' : 'bg-danger'); ?>">
                                         <?php echo $product['stock']; ?>
