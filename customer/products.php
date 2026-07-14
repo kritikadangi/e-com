@@ -80,8 +80,9 @@ $categories = $categories_stmt->fetchAll(PDO::FETCH_COLUMN);
             <?php foreach ($products as $index => $product): ?>
                 <div class="col-md-4 mb-4 fade-in-up" style="animation-delay: <?php echo $index * 0.08; ?>s;">
                     <div class="card product-card h-100">
-                        <?php if ($product['image']): ?>
-                            <img src="../uploads/<?php echo htmlspecialchars($product['image']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($product['name']); ?>">
+                        <?php $image_url = get_product_image_url($product['image'], '../'); ?>
+                        <?php if ($image_url): ?>
+                            <img src="<?php echo htmlspecialchars($image_url); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($product['name']); ?>">
                         <?php else: ?>
                             <div class="bg-light d-flex align-items-center justify-content-center" style="height: 220px;">
                                 <i class="fas fa-image text-muted fa-3x"></i>

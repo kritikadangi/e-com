@@ -64,8 +64,9 @@ foreach ($cart_items as $item) {
                                     <tr class="fade-in-up">
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <?php if ($item['image']): ?>
-                                                    <img src="../uploads/<?php echo htmlspecialchars($item['image']); ?>" style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;" class="me-3" alt="<?php echo htmlspecialchars($item['name']); ?>">
+                                                <?php $image_url = get_product_image_url($item['image'], '../'); ?>
+                                                <?php if ($image_url): ?>
+                                                    <img src="<?php echo htmlspecialchars($image_url); ?>" style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;" class="me-3" alt="<?php echo htmlspecialchars($item['name']); ?>">
                                                 <?php else: ?>
                                                     <div class="bg-light me-3 d-flex align-items-center justify-content-center" style="width: 60px; height: 60px; border-radius: 8px;">
                                                         <i class="fas fa-image text-muted"></i>

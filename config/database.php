@@ -33,4 +33,17 @@ try {
             <p>" . htmlspecialchars($e->getMessage()) . "</p>
          </div>");
 }
+
+// Helper function to get product image URL
+function get_product_image_url($image, $relative_path = '') {
+    if (empty($image)) {
+        return '';
+    }
+    // Check if it's already a full URL
+    if (filter_var($image, FILTER_VALIDATE_URL)) {
+        return $image;
+    }
+    // Otherwise it's a local file in uploads folder
+    return $relative_path . 'uploads/' . $image;
+}
 ?>
