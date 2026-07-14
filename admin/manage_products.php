@@ -40,8 +40,9 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <tr class="fade-in-up" style="animation-delay: <?php echo $index * 0.05; ?>s;">
                                 <td class="fw-bold"><?php echo $product['id']; ?></td>
                                 <td>
-                                    <?php if ($product['image']): ?>
-                                        <img src="../uploads/<?php echo htmlspecialchars($product['image']); ?>" 
+                                    <?php $image_url = get_product_image_url($product['image'], '../'); ?>
+                                    <?php if ($image_url): ?>
+                                        <img src="<?php echo htmlspecialchars($image_url); ?>" 
                                              style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;">
                                     <?php else: ?>
                                         <div class="bg-light d-flex align-items-center justify-content-center" 

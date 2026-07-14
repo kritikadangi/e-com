@@ -57,8 +57,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_to_cart'])) {
     <div class="row fade-in-up">
         <div class="col-md-6 mb-4 mb-md-0">
             <div class="card p-2">
-                <?php if ($product['image']): ?>
-                    <img src="../uploads/<?php echo htmlspecialchars($product['image']); ?>" class="img-fluid rounded product-detail-img" alt="<?php echo htmlspecialchars($product['name']); ?>">
+                <?php $image_url = get_product_image_url($product['image'], '../'); ?>
+                <?php if ($image_url): ?>
+                    <img src="<?php echo htmlspecialchars($image_url); ?>" class="img-fluid rounded product-detail-img" alt="<?php echo htmlspecialchars($product['name']); ?>">
                 <?php else: ?>
                     <div class="bg-light d-flex align-items-center justify-content-center rounded" style="height: 400px;">
                         <i class="fas fa-image text-muted fa-4x"></i>
