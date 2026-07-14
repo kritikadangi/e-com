@@ -1,6 +1,12 @@
 <?php
-session_start();
+require_once 'config/database.php';
+$role = $_SESSION['role'] ?? null;
 session_destroy();
-header('Location: index.php');
+
+if ($role === 'admin') {
+    header('Location: admin/login.php');
+} else {
+    header('Location: index.php');
+}
 exit;
 ?>
