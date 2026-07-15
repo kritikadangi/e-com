@@ -108,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 </select>
                             </div>
                             <div class="col-md-3">
-                                <label class="form-label fw-bold"><i class="fas fa-dollar-sign me-2"></i>Price *</label>
+                                <label class="form-label fw-bold"><i class="fas fa-indian-rupee-sign me-2"></i>Price *</label>
                                 <input type="number" name="price" class="form-control form-control-lg" step="0.01" 
                                        value="<?php echo $product['price']; ?>" required>
                             </div>
